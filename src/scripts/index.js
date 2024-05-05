@@ -1,9 +1,9 @@
 // Импорты
 
-import '/pages/index.css';
+import '../pages/index.css';
 import {initialCards} from "./dataCards.js";
 import {createCard, deleteCard, likeCard} from "./card.js";
-import {openModal, closeModal, handleKey, popupClose} from './modal.js';
+import {openModal, closeModal, handlePopupClose} from './modal.js';
 
 // Переменные
 
@@ -15,7 +15,7 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_new-card');
 
-const popupsAll = document.querySelectorAll('.popup');
+const allPopups = document.querySelectorAll('.popup');
 
 const formProfile = document.forms.edit_profile;
 const inputProfileName = document.querySelector(".profile__title");
@@ -33,10 +33,10 @@ const popupImageZoom = document.querySelector('.popup_type_image');
 
 profileEditButton.addEventListener('click', () => {
     openModal(popupEditProfile);
-    profileValue();
+    fillProfileInputs();
 })
 
-function profileValue() {
+function fillProfileInputs() {
     formProfile.name.value = inputProfileName.textContent;
     formProfile.description.value = inputProfileJob.textContent;
 }
@@ -47,11 +47,11 @@ cardAddButton.addEventListener('click', () => {
 
 //Слушатели на крестике и оверлее для всех модалок
 
-popupsAll.forEach(popupClose);
+allPopups.forEach(handlePopupClose);
 
 // Плавное открытие/закрытие всех попапов
 
-popupsAll.forEach(popup => popup.classList.toggle('popup_is-animated'));
+allPopups.forEach(popup => popup.classList.toggle('popup_is-animated'));
 
 // Функция редактирования формы профиля
 

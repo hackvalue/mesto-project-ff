@@ -9,13 +9,13 @@ export function createCard(cardContent, deleteCard, likeCard, handleZoom) {
     cardImage.alt = cardContent.name;
     cardTitle.textContent = cardContent.name;
     
-    cardItem.querySelector('.card__delete-button').addEventListener('click', (evt) => deleteCard(evt));
+    cardItem.querySelector('.card__delete-button').addEventListener('click', deleteCard);
     
-    cardItem.querySelector('.card__like-button').addEventListener('click', (evt) => likeCard(evt));
+    cardItem.querySelector('.card__like-button').addEventListener('click', likeCard);
 
     cardImage.addEventListener('click', () => handleZoom (cardImage, cardTitle));
 
-    return(cardItem);
+    return (cardItem);
 }
 
 export function deleteCard(evt) {
