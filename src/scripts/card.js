@@ -1,4 +1,6 @@
-function createCard(cardContent, deleteCard, likeCard) {
+const cardTemplate = document.querySelector('#card-template').content;
+
+export function createCard(cardContent, deleteCard, likeCard, handleZoom) {
     const cardItem = cardTemplate.querySelector('.places__item').cloneNode(true);
     const cardImage = cardItem.querySelector('.card__image');
     const cardTitle = cardItem.querySelector('.card__title');
@@ -16,10 +18,10 @@ function createCard(cardContent, deleteCard, likeCard) {
     return(cardItem);
 }
 
-function deleteCard(evt) {
+export function deleteCard(evt) {
     evt.target.closest('.places__item').remove();
 }
 
-function likeCard(evt) {
+export function likeCard(evt) {
     evt.target.classList.toggle('card__like-button_is-active');
   }
