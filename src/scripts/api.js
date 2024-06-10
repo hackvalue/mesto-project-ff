@@ -1,4 +1,4 @@
-// Связь с сервером
+// Связь с сервером и проверка ответа
 
 const config = {
   baseUrl: "https://nomoreparties.co/v1/wff-cohort-15",
@@ -9,7 +9,8 @@ const config = {
 };
 
 function callAPI(config, link, options) {
-  return fetch(`${config.baseUrl}/` + link, options).then(checkResponse);
+  return fetch(`${config.baseUrl}/` + link, options)
+  .then(checkResponse);
 }
 
 function checkResponse(res) {
@@ -48,6 +49,8 @@ export const updateProfileData = (dataProfileName, dataProfileJob) => {
   });
 };
 
+// Добавление/удаление карточки
+
 export const postNewCard = (dataCardName, dataCardLink) => {
   return callAPI(config, "cards", {
     method: "POST",
@@ -66,6 +69,8 @@ export const deleteOneCard = (cardId) => {
   });
 };
 
+// Добавление/удаление лайка
+
 export const addLike = (cardId) => {
   return callAPI(config, "cards/likes/" + cardId, {
     method: "PUT",
@@ -79,6 +84,8 @@ export const deleteLike = (cardId) => {
     headers: config.headers,
   });
 };
+
+// Редактирование аватара
 
 export const editProfileAvatar = (inputAvatarValue) => {
   return callAPI(config, 'users/me/avatar', {

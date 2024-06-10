@@ -17,6 +17,7 @@ export function createCard(
   cardTitle.textContent = cardContent.name;
 
   const cardLikeButton = cardItem.querySelector(".card__like-button");
+
   const likeCounter = cardItem.querySelector(".like-count");
   likeCounter.textContent = cardContent.likes.length;
   const likeArray = cardContent.likes;
@@ -34,7 +35,11 @@ export function createCard(
   }
 
   cardLikeButton.addEventListener("click", () => {
-    const checkLike = cardLikeButton.classList.contains("card__like-button_is-active") ? deleteLike : addLike;
+    const checkLike = cardLikeButton.classList.contains(
+      "card__like-button_is-active"
+    )
+      ? deleteLike
+      : addLike;
     checkLike(cardContent._id)
       .then((res) => {
         toggleLike(cardLikeButton);
