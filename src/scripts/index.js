@@ -184,9 +184,11 @@ function handleAvatarFormSubmit(evt) {
 popupEditAvatar.addEventListener("submit", handleAvatarFormSubmit);
 
 //Слушатели на крестике и оверлее для всех модалок
+
 allPopups.forEach(handlePopupClose);
 
 // Плавное открытие/закрытие всех попапов
+
 allPopups.forEach((popup) => popup.classList.toggle("popup_is-animated"));
 
 // Функция открытия изображения
@@ -207,5 +209,5 @@ Promise.all([getProfileData(), getCardsData()])
     showCards(cardsData);
   })
   .catch((err) => {
-    console.log(`Ошибка на промисе: ${err}`);
+    console.log(`Ошибка связи: ${err}`);
   });
