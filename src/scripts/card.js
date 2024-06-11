@@ -8,22 +8,22 @@ export function createCard(
   userId
 ) {
   const cardTemplate = document.querySelector("#card-template").content;
+
   const cardItem = cardTemplate.querySelector(".places__item").cloneNode(true);
   const cardImage = cardItem.querySelector(".card__image");
   const cardTitle = cardItem.querySelector(".card__title");
 
+  const cardLikeButton = cardItem.querySelector(".card__like-button");
+  const likeCounter = cardItem.querySelector(".like-count");
+  const likeArray = cardContent.likes;
+
+  const cardDeleteButton = cardItem.querySelector(".card__delete-button");
+
   cardImage.src = cardContent.link;
   cardImage.alt = cardContent.name;
   cardTitle.textContent = cardContent.name;
-
-  const cardLikeButton = cardItem.querySelector(".card__like-button");
-
-  const likeCounter = cardItem.querySelector(".like-count");
   likeCounter.textContent = cardContent.likes.length;
-  const likeArray = cardContent.likes;
   likeArray.forEach((like) => isLiked(like._id, userId, cardLikeButton));
-
-  const cardDeleteButton = cardItem.querySelector(".card__delete-button");
 
   if (userId !== cardContent.owner._id) {
     cardDeleteButton.disabled = true;
